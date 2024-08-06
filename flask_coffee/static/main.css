@@ -1,0 +1,29 @@
+.carousel-item {
+    height: 75vh !important;
+}
+
+.c-img, .card-img-top{
+    object-fit:cover;
+    object-position: center;
+}
+
+.c-img {
+    height: 100%;
+}
+
+#carousel-2 {
+    object-position: 65% 65%;
+}
+#carousel-3 {
+    object-position: 75% 75%;
+}
+
+.card-img-top{
+    height: 25vh;
+}
+
+#bestseller-2 {
+    object-position: 30% 30%;
+}
+
+.carousel('pause')
