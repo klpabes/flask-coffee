@@ -26,4 +26,14 @@
     object-position: 30% 30%;
 }
 
-.carousel('pause')
+body  {
+    background-color: #F8DCC4;
+}
+
+.card, #myCarousel {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.navbar {
+    background-color: rgba(249,252,243, 0.95) !important;
+}
