@@ -30,16 +30,16 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 @app.route("/blog")
 def blog():
-    return render_template('blog.html')
+    return render_template('blog.html', title='Blog')
 
 @app.route("/login")
 def login():
-    return render_template('login.html')
+    return render_template('login.html', title='Login')
 
 @app.route("/register")
 def register():
-    return render_template('register.html')
+    return render_template('register.html', title='Register')
