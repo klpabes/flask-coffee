@@ -4,18 +4,21 @@ from flask_coffee import app
 
 index_items = [
     {
-        'item': 'Latte',
+        'name': 'Latte',
         'desc': 'Popular coffee drink made with espresso and steamed milk.',
+        'price': 150,
         'date_posted': 'August 6, 2024'
     },
     {
-        'item': 'Capuccino',
+        'name': 'Capuccino',
         'desc': 'A classic coffee beverage made with equal parts espresso, steamed milk, and milk foam.',
+        'price': 175,
         'date_posted': 'August 6, 2024'
     },
     {
-        'item': 'Capuccino',
+        'name': 'Americano',
         'desc': 'A classic coffee drink by diluting a shot of espresso with hot water.',
+        'price': 100,
         'date_posted': 'August 6, 2024'
     },
 ]
