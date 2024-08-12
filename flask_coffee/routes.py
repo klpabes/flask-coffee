@@ -1,6 +1,7 @@
 from flask import render_template, url_for, flash, redirect
+from flask_coffee.forms import RegistrationForm, LoginForm
+# from flask_coffee.models import User, Post
 from flask_coffee import app
-# from app.forms import RegistrationForm, LoginForm
 
 index_items = [
     {
@@ -36,10 +37,21 @@ def about():
 def blog():
     return render_template('blog.html', title='Blog')
 
-@app.route("/login")
+@app.route("/login", methods=['GET','POST'])
 def login():
-    return render_template('login.html', title='Login')
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == 'admin@coffee.com' and form.password.data == 'password':
+            flash('You are now logged in!', 'success')
+            return redirect(url_for('index'))
+        else:
+            flash('Login Unsuccessful, please check email and password', 'danger')
+    return render_template('login.html', title='Login', form=form)
 
-@app.route("/register")
+@app.route("/register", methods=['GET','POST'])
 def register():
-    return render_template('register.html', title='Register')
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('index'))
+    return render_template('register.html', title='Register', form=form)

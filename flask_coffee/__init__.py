@@ -1,8 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '442964f3dd92d42a1c334dd4567c3a4b'
+app.config['SECRET_KEY'] = 'c94f9ce1d56f7462cc9ad8dff95d34d7'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
