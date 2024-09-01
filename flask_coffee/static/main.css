@@ -37,3 +37,8 @@ body  {
 .navbar {
     background-color: rgba(249,252,243, 0.95) !important;
 }
+
+.account-img {
+    height: 200px;
+    width: 200px;
+}
