@@ -13,12 +13,12 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique=True, nullable=False)
     image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    products = db.relationship('Product', backref='seller', lazy=True) #name or id??
+    posts = db.relationship('Post', backref='author', lazy=True) #name or id??
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
 
-class Product(db.Model):
+class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.now)
@@ -27,4 +27,4 @@ class Product(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"Product('{self.name}', '{self.date_posted}')"
+        return f"Post('{self.name}', '{self.date_posted}', '{self.image_file}')"

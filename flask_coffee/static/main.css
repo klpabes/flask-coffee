@@ -42,3 +42,12 @@ body  {
     height: 200px;
     width: 200px;
 }
+
+a {
+text-decoration: none;
+}
+
+.small {
+    height: 1rem;
+    width: 1rem;
+}
