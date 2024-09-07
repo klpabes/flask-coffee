@@ -76,6 +76,9 @@ def account():
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
+            if current_user.image_file and current_user.image_file != 'default.jpg':
+                prev_picture = os.path.join(app.root_path, 'static', 'account', current_user.image_file)
+                os.remove(prev_picture)
             picture_file = save_picture(form.picture.data, account.__name__)
             current_user.image_file = picture_file
         current_user.username = form.username.data
@@ -127,6 +130,9 @@ def update_post(post_id):
     form = PostForm()
     if form.validate_on_submit():
         if form.image_file.data:
+            if post.image_file and post.image_file != 'default1.jpg':
+                prev_picture = os.path.join(app.root_path, 'static', 'new_post', post.image_file)
+                os.remove(prev_picture)
             picture_file = save_picture(form.image_file.data, "new_post")
             post.image_file = picture_file
         post.name = form.name.data
@@ -147,13 +153,18 @@ def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
+    prev_picture = os.path.join(app.root_path, 'static', 'new_post', post.image_file)
+    os.remove(prev_picture)
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('index'))
 
-@app.route("/")
-def index():
+@app.route("/user/<string:username>")
+def user_posts(username):
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page = page, per_page=4)
-    return render_template('index.html', index_items=posts)
+    user = User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(author=user)\
+        .order_by(Post.date_posted.desc())\
+        .paginate(page=page, per_page=4)
+    return render_template('user_posts.html', index_items=posts, user=user)
