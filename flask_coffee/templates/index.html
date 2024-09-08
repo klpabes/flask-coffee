@@ -12,9 +12,9 @@
             <img src="{{ url_for('static', filename='carousel-1.jpg') }}" alt="" class="w-100 c-img" id="carousel-1">
             <div class="container">
               <div class="carousel-caption text-start">
-                <h1>Example headline.</h1>
-                <p class="opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
+                <h1>Nam dignissim.</h1>
+                <p class="opacity-75">Viverra elit porta sagittis.</p>
+                <p><a class="btn btn-lg btn-primary" href="{{ url_for('register') }}">Sign up today</a></p>
               </div>
             </div>
           </div>
@@ -22,9 +22,9 @@
             <img src="{{ url_for('static', filename='carousel-2.jpg') }}" alt="" class="w-100 c-img" id="carousel-2" >
             <div class="container">
               <div class="carousel-caption">
-                <h1>Another example headline.</h1>
-                <p>Some representative placeholder content for the second slide of the carousel.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
+                <h1>Lorem ipsum dolor sit amet</h1>
+                <p>Consectetur adipiscing elit. Maecenas auctor neque lectus, non fringilla urna dapibus a. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                <p><a class="btn btn-lg btn-primary" href="{{ url_for('about') }}">Learn more</a></p>
               </div>
             </div>
           </div>
@@ -32,9 +32,8 @@
             <img src="{{ url_for('static', filename='carousel-3.jpg') }}" alt="" class="w-100 c-img" id="carousel-3">
             <div class="container">
               <div class="carousel-caption text-end">
-                <h1>One more for good measure.</h1>
-                <p>Some representative placeholder content for the third slide of this carousel.</p>
-                <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
+                <h1>In enim turpis.</h1>
+                <p>Fermentum vel tincidunt at, imperdiet ac velit. Nunc id fringilla erat, elementum egestas mauris. Aliquam efficitur vitae nulla ac sollicitudin. Nulla facilisi.</p>
               </div>
             </div>
           </div>
@@ -53,7 +52,7 @@
     <!--BESTSELLERS-->
 
 
-    <div class="container-lg mt-5 mb-5">
+    <div class="container-lg mt-5 mb-1 d-flex flex-column align-items-center">
       <div class="container d-flex justify-content-center mb-5">
         <h1>Our Gallery</h1>
       </div>
@@ -71,17 +70,19 @@
         </div>
       {% endfor %}
       </div>
+      <div class="mt-5">
       {% for page_num in index_items.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %}
         {% if page_num %}
           {% if index_items.page == page_num %}
-            <a class="btn btn-info mb-4" href="{{ url_for('index', page=page_num) }}">{{ page_num }}</a>
+            <a class="btn btn-dark mb-4" href="{{ url_for('index', page=page_num) }}">{{ page_num }}</a>
           {% else %}
-            <a class="btn btn-outline-info mb-4" href="{{ url_for('index', page=page_num) }}">{{ page_num }}</a>
+            <a class="btn btn-outline-dark mb-4" href="{{ url_for('index', page=page_num) }}">{{ page_num }}</a>
           {% endif %}
         {% else %}
           ...
         {% endif %}
       {% endfor %}
+      </div>
     </div>
 
 {% endblock %}
